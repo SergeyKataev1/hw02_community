@@ -1,22 +1,21 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block content %}
-  <h1>{% block title %}{{ title }}{% endblock %}</h1>
+  <h4>Последние обновления на сайте</h4>
     <article>
       {% for post in posts %}
-      <ul>
-        <li>
-          Автор: {{ post.author.get_full_name }}
-        </li>
-        <li>
-          Дата публикации: {{ post.pub_date|date:"D E Y" }}
-        </li>
-      </ul>
-      <p>{{ post.text }}</p>
+        <ul>
+          <li>
+            Автор: {{ post.author.get_full_name }}
+          </li>
+          <li>
+            Дата публикации: {{ post.pub_date|date:"D E Y" }}
+          </li>
+        </ul>
+      <p>{{ post.text|linebreaksbr }}</p>
       {% if post.group %}
-      <a href="{% url 'posts:group_list' post.group.slug %}">Все записи группы</a>
+      <a href="{% url 'posts:group_list' post.group.slug %}">Все записи группы {{ post.group.title }}</a>
       {% endif %}
-      {% if not forloop.last %}<hr>{% endif %}
-    {% endfor %}
     </article>
+    {% if not forloop.last %}<hr>{% endif %}
+    {% endfor %}
 {% endblock %}
