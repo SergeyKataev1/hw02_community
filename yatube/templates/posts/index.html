@@ -8,6 +8,9 @@
             Автор: {{ post.author.get_full_name }}
           </li>
           <li>
+            Группа: {{ post.group }}
+          </li>
+          <li>
             Дата публикации: {{ post.pub_date|date:"D E Y" }}
           </li>
         </ul>
