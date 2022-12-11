@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-  <h4>Записи группы {{ group.title}}</h4>
-    <article>
-      <p>{{ group.description }}</p>
-      {% for post in posts %}
+<title>{% block title %}{{ group.title }}{% endblock %}</title>
+  <h1>Записи группы {{ group.title}}</h1>
+    <p>{{ group.description }}</p>
+     {% for post in posts %}
         <ul>
           <li>
             Автор: {{ post.author.get_full_name }}
@@ -12,8 +12,7 @@
             Дата публикации: {{ post.pub_date|date:"D E Y" }}
           </li>
         </ul>
-      <p>{{ post.text|linebreaksbr }}</p>
-    </article>  
+    <p>{{ post.text|linebreaksbr }}</p>
     {% if not forloop.last %}<hr>{% endif %}
-    {% endfor %}
+  {% endfor %}
 {% endblock %}
