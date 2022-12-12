@@ -4,7 +4,7 @@ from .models import Group, Post
 
 
 def index(request):
-    limit = 20
+    limit = 10
     posts = Post.objects.all()[:limit]
     context = {
         'posts': posts

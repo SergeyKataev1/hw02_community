@@ -8,7 +8,8 @@ class Group(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(unique=True)
     description = models.TextField()
-
+    verbos_name = 'группы'
+    
     def __str__(self) -> str:
         return self.title
 
@@ -28,8 +29,8 @@ class Post(models.Model):
         null=True,
         on_delete=models.SET_NULL,
         related_name='posts',
-        verbose_name='группы'
+        verbose_name='группа'
     )
 
     class Meta:
-        ordering = ['-pub_date']
+        ordering = ('-pub_date', )

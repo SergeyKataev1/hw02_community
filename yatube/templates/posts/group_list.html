@@ -3,7 +3,8 @@
 <title>{% block title %}{{ group.title }}{% endblock %}</title>
   <h1>Записи группы {{ group.title}}</h1>
     <p>{{ group.description }}</p>
-     {% for post in posts %}
+    {% for post in posts %}
+      <article> 
         <ul>
           <li>
             Автор: {{ post.author.get_full_name }}
@@ -12,7 +13,8 @@
             Дата публикации: {{ post.pub_date|date:"D E Y" }}
           </li>
         </ul>
-    <p>{{ post.text|linebreaksbr }}</p>
+        <p>{{ post.text|linebreaksbr }}</p>
+      </article>
     {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
 {% endblock %}
