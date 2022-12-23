@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-<title>{% block title %}{{ group.title }}{% endblock %}</title>
-  <h1>{{ group.title}}</h1>
-    <p>{{ group.description }}</p>
+<title>{% block title %}Профайл пользователя {{  user_obj  }}{% endblock title %}</title>
+<div class="container py-5">        
+    <h1>Все посты пользователя: {{  user_obj  }}</h1>
+    <h3>Всего постов: {{  user_obj.posts.all.count  }}</h3>
     {% for post in page_obj %}
       <article> 
         <ul>
@@ -14,10 +15,12 @@
           </li>
         </ul>
         <p>{{ post.text|linebreaksbr }}</p>
-        <p><a href="{% url 'posts:post_detail' post.pk %}">Подробная информация</a></p>
-        <a href="{% url 'posts:index' %}">Вернуться на главную страницу</a>
-      </article>
+        </article>
     {% if not forloop.last %}<hr>{% endif %}
   {% endfor %}
-  {% include 'posts/includes/paginator.html' %}
-{% endblock %}
+      
+
+      
+    {% include 'posts/includes/paginator.html' %}
+</div>
+{% endblock content %}

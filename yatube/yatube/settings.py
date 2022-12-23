@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'posts.apps.PostsConfig',
     'users.apps.UsersConfig',
-    'core.apps.CoreConfig'
+    'core.apps.CoreConfig',
+    'about.apps.AboutConfig'
 ]
 
 MIDDLEWARE = [
@@ -53,6 +54,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.year.year',
             ],
         },
     },
@@ -116,7 +118,7 @@ LOGIN_URL = 'users:login'
 
 LOGIN_REDIRECT_URL = 'posts:index'
 
-# LOGOUT_REDIRECT_URL = 'posts:index'
+# LOGOUT_REDIRECT_URL = 'posts:index' <-- на всякий случай оставлю здесь это
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 
